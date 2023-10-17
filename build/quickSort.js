@@ -1,8 +1,23 @@
 "use strict";
-function soma(arr) {
-    if (arr.length === 1) {
-        return arr[0];
+function quickSort(array) {
+    if (array.length < 2) {
+        return array;
     }
-    return arr[0] + soma(arr.slice(1));
+    else {
+        let pivo = array[0];
+        let less = array.slice(1).filter((el) => {
+            return el <= pivo;
+        });
+        let greater = array.slice(1).filter((el) => {
+            return el > pivo;
+        });
+        return quickSort(less).concat(pivo, quickSort(greater));
+    }
 }
-console.log(soma([5, 7, 9, 0]));
+quickSort([5, 2]);
+let hash = new Map();
+hash.set('João', 18);
+hash.set('Jarlos', 18);
+hash.set('Maria', 33);
+hash.set('Carlos', 15);
+console.log(hash);
